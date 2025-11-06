@@ -62,17 +62,22 @@ class SQLAgentManager:
 4. 한국 행정구역명은 전체 이름 사용 (예: '서울특별시', '경기도')
 5. 쿼리는 반드시 세미콜론(;)으로 끝내세요
 6. 날짜 형식은 'YYYY-MM' 형식입니다 (예: '2024-10')
+7. NULL 값 제외: WHERE 절에 "년월" IS NOT NULL AND "값" IS NOT NULL 추가
 
-**답변 작성 규칙:**
+**주의사항:**
+- 데이터가 없으면 "해당 조건의 데이터가 없습니다"라고 명확히 알려주세요
+- 추측하지 말고 실제 데이터만 기반으로 답변하세요
+"""
+        system_suffix = """
+**최종 답변 작성 규칙:**
 1. 모든 답변은 반드시 한국어로 작성하세요
 2. 수치는 쉼표로 구분하세요 (예: 9,422,094명)
 3. 2-3문장으로 간결하고 명확하게 답변하세요
 4. 조회 기준 시점(년월)을 명시하세요
 5. 데이터 출처 테이블을 언급하세요
 
-**주의사항:**
-- 데이터가 없으면 "해당 조건의 데이터가 없습니다"라고 명확히 알려주세요
-- 추측하지 말고 실제 데이터만 기반으로 답변하세요
+절대 영어로 답변하지 마세요.
+반드시 한국어로만 답변하세요.
 """
 
         # SQL Agent 생성 (커스텀 도구 포함)
@@ -83,7 +88,8 @@ class SQLAgentManager:
             verbose=True,
             handle_parsing_errors=True,
             extra_tools=[search_table_metadata],
-            prefix=system_prefix,
+            prefix=system_prefix + "\n\n" + system_suffix,
+            # suffix=system_suffix,
         )
         print("✅ SQL Agent 생성 완료 (메타데이터 검색 도구 포함)")
 
