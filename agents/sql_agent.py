@@ -25,7 +25,7 @@ class SQLAgentManager:
             model=settings.MODEL_NAME,
             temperature=settings.TEMPERATURE,
         )
-        print(f"✅ LLM 초기화 완료: {settings.MODEL_NAME}")
+        print(f"LLM 초기화 완료: {settings.MODEL_NAME}")
 
         # DB 연결
         self.db = db_manager.get_db()
@@ -85,13 +85,13 @@ class SQLAgentManager:
             llm=self.llm,
             db=self.db,
             agent_type="openai-tools",
-            verbose=True,
+            verbose=False,
             handle_parsing_errors=True,
             extra_tools=[search_table_metadata],
             prefix=system_prefix + "\n\n" + system_suffix,
             # suffix=system_suffix,
         )
-        print("✅ SQL Agent 생성 완료 (메타데이터 검색 도구 포함)")
+        print("SQL Agent 생성 완료 (메타데이터 검색 도구 포함)")
 
         return self.agent
 
@@ -115,7 +115,7 @@ class SQLAgentManager:
 
         try:
             print(f"\n{'='*60}")
-            print(f"❓ 질문: {question}")
+            print(f"질문: {question}")
             print(f"{'='*60}")
 
             result = self.agent.invoke({"input": question})
@@ -128,7 +128,7 @@ class SQLAgentManager:
             }
 
         except Exception as e:
-            print(f"❌ 에러 발생: {e}")
+            print(f"에러 발생: {e}")
             return {
                 "question": question,
                 "answer": None,
