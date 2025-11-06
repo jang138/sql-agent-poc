@@ -26,10 +26,10 @@ def search_table_metadata(keywords: str) -> str:
     query = f"""
     SELECT 
         table_name,
-        description,
+        korean_name,
         keywords,
-        column_info,
-        notes
+        columns_info,
+        note
     FROM table_metadata
     WHERE keywords LIKE '%{keywords}%'
     """
