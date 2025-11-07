@@ -85,7 +85,7 @@ class SQLAgentManager:
             llm=self.llm,
             db=self.db,
             agent_type="openai-tools",
-            verbose=False,
+            verbose=True,
             handle_parsing_errors=True,
             extra_tools=[search_table_metadata],
             prefix=system_prefix + "\n\n" + system_suffix,
