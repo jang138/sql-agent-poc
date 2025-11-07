@@ -29,7 +29,7 @@ class Settings:
     DB_URI: str = f"sqlite:///{BASE_DIR / DB_PATH}"
 
     # LLM 설정
-    MODEL_NAME: str = "solar-pro"
+    MODEL_NAME: str = "solar-pro2"
     TEMPERATURE: float = 0.0
 
     def validate(self):
