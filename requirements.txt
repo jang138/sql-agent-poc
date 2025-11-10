@@ -1,5 +1,5 @@
-langchain_community==0.4.1
-langchain_core==1.0.3
-langchain_upstage==0.7.4
-python-dotenv==1.2.1
-SQLAlchemy==2.0.44
+langchain_community
+langchain_core
+langchain_upstage
+python-dotenv
+SQLAlchemy
