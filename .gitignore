@@ -60,3 +60,10 @@ htmlcov/
 *.bak
 test_*.py
 temp/
+
+# embedding file
+embeding_DB/
+**/*.bin
+
+# csv
+**/*.csv
