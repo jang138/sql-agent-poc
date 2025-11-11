@@ -5,3 +5,4 @@ langchain-chroma
 python-dotenv
 SQLAlchemy
 langgraph
+chromadb
