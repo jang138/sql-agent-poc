@@ -1,5 +1,7 @@
 langchain_community
 langchain_core
 langchain_upstage
+langchain-chroma
 python-dotenv
 SQLAlchemy
+langgraph

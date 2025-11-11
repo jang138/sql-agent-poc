@@ -63,7 +63,11 @@ temp/
 
 # embedding file
 embeding_DB/
+embedding_db/
 **/*.bin
 
 # csv
 **/*.csv
+
+# json
+**/*.json
