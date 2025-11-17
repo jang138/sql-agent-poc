@@ -27,7 +27,7 @@ def setup_embedding_db(db_path: str = None):
     from database.metadata_manager import get_metadata_manager
 
     # 메타데이터 매니저
-    manager = get_metadata_manager(db_path)
+    manager = get_metadata_manager()
 
     # 짧은 문서 생성
     documents = []
