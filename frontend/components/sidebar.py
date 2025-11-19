@@ -13,7 +13,7 @@ def render_sidebar():
     """사이드바 렌더링"""
 
     with st.sidebar:
-        st.title("Easysatat Q")
+        st.title("Easystat Q")
 
         st.markdown("---")
 
@@ -21,7 +21,7 @@ def render_sidebar():
         st.markdown(
             """
         <p>
-            이 챗봇은 통계청 데이터를 자연어로 조회할 수 있도록 도와줍니다.
+            이 챗봇은 KOSIS(국가통계포털) 데이터를 자연어로 조회할 수 있도록 도와줍니다.
             SQL 쿼리를 자동으로 생성하고 실행하여 결과를 보여드립니다.
         </p>
         """,
