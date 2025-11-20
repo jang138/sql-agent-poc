@@ -20,13 +20,18 @@ def generate_sql(state: StatsChatbotState) -> Command[Literal["execute_sql"]]:
     # LLM 초기화
     llm = get_llm_text()
 
+    conversation_history = state.get("conversation_history", "없음")
+
     # 테이블 정보 포맷팅
     tables_info_str = "\n\n".join(
         [
             f"### {table['table_name']}\n"
             f"설명: {table['description']}\n"
             f"컬럼: {table['columns']}\n"
+            f"컬럼 상세: {table.get('column_detail', {})}\n"
             f"시간컬럼: {table.get('period_column', '년월')}\n"
+            f"기간: {table.get('period', 'N/A')}\n"
+            f"예시 쿼리: {table.get('example_queries', 'N/A')}\n"
             f"주의사항: {table.get('caution', '없음')}"
             for table in state["tables_info"]
         ]
@@ -39,6 +44,7 @@ def generate_sql(state: StatsChatbotState) -> Command[Literal["execute_sql"]]:
 
     # 프롬프트 포맷팅
     prompt = SQL_GENERATION_PROMPT.format(
+        conversation_history=conversation_history,
         user_query=state["user_query"],
         tables_info=tables_info_str,
         error_feedback=error_feedback,
